@@ -6,6 +6,12 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -282,6 +288,17 @@ public class LimelightHelpers {
         return getLimelightNTTableEntry(tableName, entryName).getString("");
     }
 
+    public static URL getLimelightURLString(String tableName, String request){
+        String urlString = "http://" + sanitizeName(tableName) + ".local:5807/" + request;
+        URL url;
+        try {
+            url = new URL(urlString);
+            return url;
+        } catch (MalformedURLException e) {
+            System.err.println("bad LL URL");
+        }
+        return null;
+    }
     /////
     /////
 
@@ -372,6 +389,43 @@ public class LimelightHelpers {
     public static double[] getPythonScriptData(String limelightName) {
         return getLimelightNTDoubleArray(limelightName, "llpython");
     }
+
+    /////
+    /////
+
+    /**
+     * Asynchronously take snapshot.
+     */
+    public static CompletableFuture<Boolean> takeSnapshot(String tableName, String snapshotName) {
+        return CompletableFuture.supplyAsync(() -> {
+           return SYNCH_TAKESNAPSHOT(tableName, snapshotName);
+        });
+    }
+                
+    private static boolean SYNCH_TAKESNAPSHOT(String tableName, String snapshotName)
+    {
+        URL url = getLimelightURLString(tableName, "capturesnapshot");
+        try {
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            if(snapshotName != null && snapshotName != ""){
+                connection.setRequestProperty("snapname", snapshotName);
+            }
+            
+            int responseCode = connection.getResponseCode();
+            if(responseCode == 200){
+                return true;
+            }
+            else{
+                System.err.println("Bad LL Request");
+            }
+        } 
+        catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
 
     /**
      * Parses Limelight's JSON results dump into a LimelightResults Object

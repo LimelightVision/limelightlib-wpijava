@@ -26,3 +26,7 @@ double pipelineLatency = llresults.results.latency_pipeline;
 LimelightTarget_Fiducial = llresults.results.targets_Fiducials;
 ```
 
+### Taking snapshots
+```
+LimelightHelpers.takeSnapshot("","snapshotname");
+```

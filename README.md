@@ -15,6 +15,8 @@ double tx = LimelightHelpers.getTX("");
 
 ### JSON Parsing
 getLatestResults() parses the latest Limelight JSON dump into a LimelightResults object.
+Takes up to 2.5ms on RoboRIO 1.0. Parsing latency is logged in results.targetingresults.latency_jsonParse and may be added to latency_pipeline and latency_capture.
+
 ```
 LimelightResults llresults = LimelightHelpers.getLatestResults("");
 ```

@@ -288,7 +288,7 @@ public class LimelightHelpers {
         return getLimelightNTTableEntry(tableName, entryName).getString("");
     }
 
-    public static URL getLimelightURLString(String tableName, String request){
+    public static URL getLimelightURLString(String tableName, String request) {
         String urlString = "http://" + sanitizeName(tableName) + ".local:5807/" + request;
         URL url;
         try {
@@ -398,34 +398,30 @@ public class LimelightHelpers {
      */
     public static CompletableFuture<Boolean> takeSnapshot(String tableName, String snapshotName) {
         return CompletableFuture.supplyAsync(() -> {
-           return SYNCH_TAKESNAPSHOT(tableName, snapshotName);
+            return SYNCH_TAKESNAPSHOT(tableName, snapshotName);
         });
     }
-                
-    private static boolean SYNCH_TAKESNAPSHOT(String tableName, String snapshotName)
-    {
+
+    private static boolean SYNCH_TAKESNAPSHOT(String tableName, String snapshotName) {
         URL url = getLimelightURLString(tableName, "capturesnapshot");
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            if(snapshotName != null && snapshotName != ""){
+            if (snapshotName != null && snapshotName != "") {
                 connection.setRequestProperty("snapname", snapshotName);
             }
-            
+
             int responseCode = connection.getResponseCode();
-            if(responseCode == 200){
+            if (responseCode == 200) {
                 return true;
-            }
-            else{
+            } else {
                 System.err.println("Bad LL Request");
             }
-        } 
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
         return false;
     }
-
 
     /**
      * Parses Limelight's JSON results dump into a LimelightResults Object

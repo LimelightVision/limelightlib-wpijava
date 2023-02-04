@@ -318,6 +318,10 @@ public class LimelightHelpers {
         return getLimelightNTDouble(limelightName, "tl");
     }
 
+    public static double getLatency_Capture(String limelightName) {
+        return getLimelightNTDouble(limelightName, "tl_cap");
+    }
+
     public static double getCurrentPipelineIndex(String limelightName) {
         return getLimelightNTDouble(limelightName, "getpipe");
     }
@@ -339,7 +343,7 @@ public class LimelightHelpers {
     }
 
     public static double[] getBotPose_TargetSpace(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "botpose_TargetSpace");   
+        return getLimelightNTDoubleArray(limelightName, "botpose_targetSpace");   
     }
    
     public static double[] getCameraPose_TargetSpace(String limelightName){

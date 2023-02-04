@@ -60,6 +60,7 @@ getTX()
 getTY()
 getTA()
 getLatency_Pipeline()
+getLatency_Capture()
 getCurrentPipelineIndex()
 getJsonDump()
 

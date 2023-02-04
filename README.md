@@ -63,6 +63,18 @@ getLatency_Pipeline()
 getCurrentPipelineIndex()
 getJsonDump()
 
+getBotpose()
+getBotpose_wpiRed()
+getBotpose_wpiBlue()
+getBotpose_TargetSpace
+getCameraPsoe_TargetSpace()
+getTargetPose_CameraSpace()
+getTargetPose_RobotSpace()
+
+getTargetColor()
+getFiducialID()
+getNeuralClassID()
+
 setPipelineIndex()
 
 setLEDMode_PipelineControl()

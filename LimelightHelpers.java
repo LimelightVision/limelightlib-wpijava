@@ -326,6 +326,47 @@ public class LimelightHelpers {
         return getLimelightNTString(limelightName, "json");
     }
 
+    public static double[] getBotpose(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "botpose");   
+    }
+    
+    public static double[] getBotpose_wpiRed(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "botpose_wpired");   
+    }
+    
+    public static double[] getBotpose_wpiBlue(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "botpose_wpiblue");   
+    }
+
+    public static double[] getBotPose_TargetSpace(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "botpose_TargetSpace");   
+    }
+   
+    public static double[] getCameraPose_TargetSpace(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "camerapose_targetspace");   
+    }
+
+    public static double[] getTargetPose_CameraSpace(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "targetpose_cameraspace");   
+    }
+
+    public static double[] getTargetPose_RobotSpace(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "targetpose_robotspace");   
+    }
+
+    public static double[] getTargetColor(String limelightName){
+        return getLimelightNTDoubleArray(limelightName, "tc");   
+    }
+
+    public static double getFiducialID(String limelightName){
+        return getLimelightNTDouble(limelightName, "tid");   
+    }
+
+    public static double getNeuralClassID(String limelightName){
+        return getLimelightNTDouble(limelightName, "tclass");   
+    }
+
+
     /////
     /////
 

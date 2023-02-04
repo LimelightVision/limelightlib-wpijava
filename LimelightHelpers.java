@@ -5,6 +5,9 @@ package frc.robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.geometry.Rotation3d;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -330,32 +333,61 @@ public class LimelightHelpers {
         return getLimelightNTString(limelightName, "json");
     }
 
-    public static double[] getBotpose(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "botpose");   
+    
+    public static Pose3d getBotpose(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
     
-    public static double[] getBotpose_wpiRed(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "botpose_wpired");   
+    public static Pose3d getBotpose_wpiRed(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_wpired");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
     
-    public static double[] getBotpose_wpiBlue(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "botpose_wpiblue");   
+    public static Pose3d getBotpose_wpiBlue(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_wpiblue");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
 
-    public static double[] getBotPose_TargetSpace(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "botpose_targetSpace");   
+    public static Pose3d getBotPose_TargetSpace(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_targetspace");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
    
-    public static double[] getCameraPose_TargetSpace(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "camerapose_targetspace");   
+    public static Pose3d getCameraPose_TargetSpace(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "camerapose_targetspace");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
 
-    public static double[] getTargetPose_CameraSpace(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "targetpose_cameraspace");   
+    public static Pose3d getTargetPose_CameraSpace(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "targetpose_cameraspace");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
 
-    public static double[] getTargetPose_RobotSpace(String limelightName){
-        return getLimelightNTDoubleArray(limelightName, "targetpose_robotspace");   
+    public static Pose3d getTargetPose_RobotSpace(String limelightName){
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "targetpose_robotspace");
+        return new Pose3d(
+            new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
+            new Rotation3d(poseArray[3], poseArray[4], poseArray[5])
+        );
     }
 
     public static double[] getTargetColor(String limelightName){

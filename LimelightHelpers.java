@@ -64,7 +64,7 @@ class LimelightTarget_Retro {
 
 class LimelightTarget_Fiducial {
 
-    @JsonProperty("fid")
+    @JsonProperty("fID")
     double fiducialID;
 
     @JsonProperty("fam")

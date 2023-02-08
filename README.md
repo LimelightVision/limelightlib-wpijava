@@ -35,13 +35,13 @@ LimelightHelpers.takeSnapshot("","snapshotname");
 
 ### Classes
 ```
-LimelightTarget_Retro
-LimelightTarget_Fiducial
-LimelightTarget_Barcode
-LimelightTarget_Classifier
-LimelightTarget_Detector
-Results
-LimelightResults
+LimelightHelpers.LimelightTarget_Retro
+LimelightHelpers.LimelightTarget_Fiducial
+LimelightHelpers.LimelightTarget_Barcode
+LimelightHelpers.LimelightTarget_Classifier
+LimelightHelpers.LimelightTarget_Detector
+LimelightHelpers.Results
+LimelightHelpers.LimelightResults
 (Pure Static) LimelightHelpers
 ```
 

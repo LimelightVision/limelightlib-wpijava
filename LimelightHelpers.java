@@ -1,4 +1,4 @@
-//LimelightHelpers v1.1 (Feb 8, 2023)
+//LimelightHelpers v1.1.1 (Feb 8, 2023)
 
 package frc.robot;
 
@@ -352,7 +352,7 @@ public class LimelightHelpers {
         }
     }
 
-    static class LimelightResults {
+    public static class LimelightResults {
         @JsonProperty("Results")
         public Results targetingResults;
 

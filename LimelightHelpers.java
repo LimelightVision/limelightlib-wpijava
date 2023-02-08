@@ -29,39 +29,39 @@ public class LimelightHelpers {
     public static class LimelightTarget_Retro {
 
         @JsonProperty("t6c_ts")
-        double[] cameraPose_TargetSpace;
+        public double[] cameraPose_TargetSpace;
 
         @JsonProperty("t6r_fs")
-        double[] robotPose_FieldSpace;
+        public double[] robotPose_FieldSpace;
 
         @JsonProperty("t6r_ts")
-        double[] robotPose_TargetSpace;
+        public  double[] robotPose_TargetSpace;
 
         @JsonProperty("t6t_cs")
-        double[] targetPose_CameraSpace;
+        public double[] targetPose_CameraSpace;
 
         @JsonProperty("t6t_rs")
-        double[] targetPose_RobotSpace;
+        public double[] targetPose_RobotSpace;
 
         @JsonProperty("ta")
-        double ta;
+        public double ta;
 
         @JsonProperty("tx")
-        double tx;
+        public double tx;
 
         @JsonProperty("txp")
-        double tx_pixels;
+        public double tx_pixels;
 
         @JsonProperty("ty")
-        double ty;
+        public double ty;
 
         @JsonProperty("typ")
-        double ty_pixels;
+        public double ty_pixels;
 
         @JsonProperty("ts")
-        double ts;
+        public double ts;
 
-        LimelightTarget_Retro() {
+        public LimelightTarget_Retro() {
             cameraPose_TargetSpace = new double[6];
             robotPose_FieldSpace = new double[6];
             robotPose_TargetSpace = new double[6];
@@ -74,45 +74,45 @@ public class LimelightHelpers {
     public static class LimelightTarget_Fiducial {
 
         @JsonProperty("fid")
-        double fiducialID;
+        public double fiducialID;
 
         @JsonProperty("fam")
-        String fiducialFamily;
+        public String fiducialFamily;
 
         @JsonProperty("t6c_ts")
-        double[] cameraPose_TargetSpace;
+        public double[] cameraPose_TargetSpace;
 
         @JsonProperty("t6r_fs")
-        double[] robotPose_FieldSpace;
+        public double[] robotPose_FieldSpace;
 
         @JsonProperty("t6r_ts")
-        double[] robotPose_TargetSpace;
+        public double[] robotPose_TargetSpace;
 
         @JsonProperty("t6t_cs")
-        double[] targetPose_CameraSpace;
+        public double[] targetPose_CameraSpace;
 
         @JsonProperty("t6t_rs")
-        double[] targetPose_RobotSpace;
+        public double[] targetPose_RobotSpace;
 
         @JsonProperty("ta")
-        double ta;
+        public double ta;
 
         @JsonProperty("tx")
-        double tx;
+        public double tx;
 
         @JsonProperty("txp")
-        double tx_pixels;
+        public double tx_pixels;
 
         @JsonProperty("ty")
-        double ty;
+        public double ty;
 
         @JsonProperty("typ")
-        double ty_pixels;
+        public double ty_pixels;
 
         @JsonProperty("ts")
-        double ts;
-
-        LimelightTarget_Fiducial() {
+        public double ts;
+        
+        public LimelightTarget_Fiducial() {
             cameraPose_TargetSpace = new double[6];
             robotPose_FieldSpace = new double[6];
             robotPose_TargetSpace = new double[6];
@@ -128,110 +128,110 @@ public class LimelightHelpers {
     public static class LimelightTarget_Classifier {
 
         @JsonProperty("class")
-        String className;
+        public String className;
 
         @JsonProperty("classID")
-        double classID;
+        public double classID;
 
         @JsonProperty("conf")
-        double confidence;
+        public double confidence;
 
         @JsonProperty("zone")
-        double zone;
+        public double zone;
 
         @JsonProperty("tx")
-        double tx;
+        public double tx;
 
         @JsonProperty("txp")
-        double tx_pixels;
+        public double tx_pixels;
 
         @JsonProperty("ty")
-        double ty;
+        public double ty;
 
         @JsonProperty("typ")
-        double ty_pixels;
+        public double ty_pixels;
 
-        LimelightTarget_Classifier() {
+        public  LimelightTarget_Classifier() {
         }
     }
 
     public static class LimelightTarget_Detector {
 
         @JsonProperty("class")
-        String className;
+        public String className;
 
         @JsonProperty("classID")
-        double classID;
+        public double classID;
 
         @JsonProperty("conf")
-        double confidence;
+        public double confidence;
 
         @JsonProperty("ta")
-        double ta;
+        public double ta;
 
         @JsonProperty("tx")
-        double tx;
+        public double tx;
 
         @JsonProperty("txp")
-        double tx_pixels;
+        public double tx_pixels;
 
         @JsonProperty("ty")
-        double ty;
+        public double ty;
 
         @JsonProperty("typ")
-        double ty_pixels;
+        public double ty_pixels;
 
-        LimelightTarget_Detector() {
+        public LimelightTarget_Detector() {
         }
     }
 
     public static class Results {
 
         @JsonProperty("pID")
-        double pipelineID;
+        public double pipelineID;
 
         @JsonProperty("tl")
-        double latency_pipeline;
+        public double latency_pipeline;
 
         @JsonProperty("tl_cap")
-        double latency_capture;
+        public double latency_capture;
 
-        double latency_jsonParse;
+        public double latency_jsonParse;
 
         @JsonProperty("ts")
-        double timestamp_LIMELIGHT_publish;
+        public double timestamp_LIMELIGHT_publish;
 
         @JsonProperty("ts_rio")
-        double timestamp_RIOFPGA_capture;
+        public double timestamp_RIOFPGA_capture;
 
         @JsonProperty("v")
-        double valid;
+        public double valid;
 
         @JsonProperty("botpose")
-        double[] botpose;
+        public double[] botpose;
 
         @JsonProperty("botpose_wpired")
-        double[] botpose_wpired;
+        public double[] botpose_wpired;
 
         @JsonProperty("botpose_wpiblue")
-        double[] botpose_wpiblue;
+        public double[] botpose_wpiblue;
 
         @JsonProperty("Retro")
-        LimelightTarget_Retro[] targets_Retro;
+        public LimelightTarget_Retro[] targets_Retro;
 
         @JsonProperty("Fiducial")
-        LimelightTarget_Fiducial[] targets_Fiducials;
+        public LimelightTarget_Fiducial[] targets_Fiducials;
 
         @JsonProperty("Classifier")
-        LimelightTarget_Classifier[] targets_Classifier;
+        public LimelightTarget_Classifier[] targets_Classifier;
 
         @JsonProperty("Detector")
-        LimelightTarget_Detector[] targets_Detector;
+        public LimelightTarget_Detector[] targets_Detector;
 
         @JsonProperty("Barcode")
-        LimelightTarget_Barcode[] targets_Barcode;
+        public LimelightTarget_Barcode[] targets_Barcode;
 
-        Results() {
+        public Results() {
             botpose = new double[6];
             botpose_wpired = new double[6];
             botpose_wpiblue = new double[6];
@@ -246,9 +246,9 @@ public class LimelightHelpers {
 
     static class LimelightResults {
         @JsonProperty("Results")
-        Results targetingResults;
+        public Results targetingResults;
 
-        LimelightResults() {
+        public LimelightResults() {
             targetingResults = new Results();
         }
     }

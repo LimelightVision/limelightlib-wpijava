@@ -267,11 +267,11 @@ public class LimelightHelpers {
         return name;
     }
 
-    private static Pose3D toPose3D(double[] inData){
+    private static Pose3d toPose3D(double[] inData){
         if(inData.length < 6)
         {
             System.err.println("Bad LL Pose Data!");
-            return new Pose3D();
+            return new Pose3d();
         }
         return new Pose3d(
             new Translation3d(inData[0], inData[1], inData[2]),
@@ -279,7 +279,7 @@ public class LimelightHelpers {
                     Units.degreesToRadians(inData[5])));
     }
 
-    private static Pose2D toPose2D(double[] inData){
+    private static Pose2d toPose2D(double[] inData){
         if(inData.length < 6)
         {
             System.err.println("Bad LL Pose Data!");

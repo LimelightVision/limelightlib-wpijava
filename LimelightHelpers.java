@@ -300,6 +300,30 @@ public class LimelightHelpers {
         @JsonProperty("botpose_wpiblue")
         public double[] botpose_wpiblue;
 
+        public Pose3d getBotPose3d() {
+            return toPose3D(botpose);
+        }
+    
+        public Pose3d getBotPose3d_wpiRed() {
+            return toPose3D(botpose_wpired);
+        }
+    
+        public Pose3d getBotPose3d_wpiBlue() {
+            return toPose3D(botpose_wpiblue);
+        }
+
+        public Pose2d getBotPose2d() {
+            return toPose2D(botpose);
+        }
+    
+        public Pose2d getBotPose2d_wpiRed() {
+            return toPose2D(botpose_wpired);
+        }
+    
+        public Pose2d getBotPose2d_wpiBlue() {
+            return toPose2D(botpose_wpiblue);
+        }
+
         @JsonProperty("Retro")
         public LimelightTarget_Retro[] targets_Retro;
 

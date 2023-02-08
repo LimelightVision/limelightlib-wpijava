@@ -115,7 +115,7 @@ public class LimelightHelpers {
 
     public static class LimelightTarget_Fiducial {
 
-        @JsonProperty("fid")
+        @JsonProperty("fID")
         public double fiducialID;
 
         @JsonProperty("fam")

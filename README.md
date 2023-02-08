@@ -18,14 +18,14 @@ getLatestResults() parses the latest Limelight JSON dump into a LimelightResults
 Takes up to 2.5ms on RoboRIO 1.0. Parsing latency is logged in results.targetingresults.latency_jsonParse and may be added to latency_pipeline and latency_capture.
 
 ```
-LimelightResults llresults = LimelightHelpers.getLatestResults("");
+LimelightHelpers.LimelightResults llresults = LimelightHelpers.getLatestResults("");
 ```
 Each LimelightResults instance contains a Results object. Each Results object contains data such as botpose, an array for each target type, etc. With getLatestResults(), you now have easy access to 100% of your Limelight's output.
 
 ```
 double[] botposeRed = llresults.results.botpose_wpired;
 double pipelineLatency = llresults.results.latency_pipeline;
-LimelightTarget_Fiducial = llresults.results.targets_Fiducials;
+LimelightHelpers.LimelightTarget_Fiducial = llresults.results.targets_Fiducials;
 ```
 
 ### Taking snapshots

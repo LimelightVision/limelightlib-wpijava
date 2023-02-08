@@ -19,6 +19,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.CompletableFuture;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -289,7 +291,8 @@ public class LimelightHelpers {
         public double timestamp_RIOFPGA_capture;
 
         @JsonProperty("v")
-        public double valid;
+        @JsonFormat(shape = Shape.NUMBER)
+        public boolean valid;
 
         @JsonProperty("botpose")
         public double[] botpose;
@@ -620,8 +623,8 @@ public class LimelightHelpers {
 
     }
 
-    public static double getTV(String limelightName) {
-        return getLimelightNTDouble(limelightName, "tv");
+    public static boolean getTV(String limelightName) {
+        return 1.0 == getLimelightNTDouble(limelightName, "tv");
     }
 
     /////

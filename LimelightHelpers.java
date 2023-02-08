@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LimelightHelpers {
 
-    static class LimelightTarget_Retro {
+    public static class LimelightTarget_Retro {
 
         @JsonProperty("t6c_ts")
         double[] cameraPose_TargetSpace;
@@ -71,7 +71,7 @@ public class LimelightHelpers {
 
     }
 
-    static class LimelightTarget_Fiducial {
+    public static class LimelightTarget_Fiducial {
 
         @JsonProperty("fid")
         double fiducialID;
@@ -121,11 +121,11 @@ public class LimelightHelpers {
         }
     }
 
-    static class LimelightTarget_Barcode {
+    public static class LimelightTarget_Barcode {
 
     }
 
-    static class LimelightTarget_Classifier {
+    public static class LimelightTarget_Classifier {
 
         @JsonProperty("class")
         String className;
@@ -155,7 +155,7 @@ public class LimelightHelpers {
         }
     }
 
-    static class LimelightTarget_Detector {
+    public static class LimelightTarget_Detector {
 
         @JsonProperty("class")
         String className;
@@ -185,7 +185,7 @@ public class LimelightHelpers {
         }
     }
 
-    static class Results {
+    public static class Results {
 
         @JsonProperty("pID")
         double pipelineID;

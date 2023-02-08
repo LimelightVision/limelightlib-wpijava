@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 
@@ -416,49 +417,56 @@ public class LimelightHelpers {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getBotPose3d_wpiRed(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_wpired");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getBotPose3d_wpiBlue(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_wpiblue");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getBotPose3d_TargetSpace(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "botpose_targetspace");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getCameraPose3d_TargetSpace(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "camerapose_targetspace");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getTargetPose3d_CameraSpace(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "targetpose_cameraspace");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     public static Pose3d getTargetPose3d_RobotSpace(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "targetpose_robotspace");
         return new Pose3d(
                 new Translation3d(poseArray[0], poseArray[1], poseArray[2]),
-                new Rotation3d(poseArray[3], poseArray[4], poseArray[5]));
+                new Rotation3d(Units.degreesToRadians(poseArray[3]), Units.degreesToRadians(poseArray[4]),
+                        Units.degreesToRadians(poseArray[5])));
     }
 
     /**
@@ -472,7 +480,7 @@ public class LimelightHelpers {
 
         double[] result = getBotPose_wpiBlue(limelightName);
         Translation2d tran2d = new Translation2d(result[0], result[1]);
-        Rotation2d r2d = new Rotation2d(result[5]);
+        Rotation2d r2d = new Rotation2d(Units.degreesToRadians(result[5]));
 
         return new Pose2d(tran2d, r2d);
 
@@ -489,7 +497,7 @@ public class LimelightHelpers {
 
         double[] result = getBotPose_wpiRed(limelightName);
         Translation2d tran2d = new Translation2d(result[0], result[1]);
-        Rotation2d r2d = new Rotation2d(result[5]);
+        Rotation2d r2d = new Rotation2d(Units.degreesToRadians(result[5]));
 
         return new Pose2d(tran2d, r2d);
 
@@ -506,7 +514,7 @@ public class LimelightHelpers {
 
         double[] result = getBotPose(limelightName);
         Translation2d tran2d = new Translation2d(result[0], result[1]);
-        Rotation2d r2d = new Rotation2d(result[5]);
+        Rotation2d r2d = new Rotation2d(Units.degreesToRadians(result[5]));
 
         return new Pose2d(tran2d, r2d);
 

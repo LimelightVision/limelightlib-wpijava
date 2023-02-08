@@ -1,8 +1,8 @@
 # Limelightlib (WPILIB Java)
-
+https://github.com/LimelightVision/limelightlib-wpijava/releases
 ## Usage
 
-This is a single-file library. All you need to do is copy the file into your Java project's "robot" folder. You don't need to create any objects for your Limelights - the library is designed to be used in a functional manner.
+This is a single-file library. All you need to do is copy the LimelightHelpers.java file from the latest release (https://github.com/LimelightVision/limelightlib-wpijava/releases) into your Java project's "robot" folder. You don't need to create any objects for your Limelights - the library is designed to be used in a functional manner.
 
 ### Basic Usage
 Every method in Limelightlib accepts a string parameter indicating the correct Limelight to use. If left blank or null, the name is assumed to be "limelight"

@@ -1,4 +1,4 @@
-//LimelightHelpers v1.1.1 (Feb 8, 2023)
+//LimelightHelpers v1.1.2 (Feb 8, 2023)
 
 package frc.robot;
 
@@ -117,7 +117,7 @@ public class LimelightHelpers {
 
     public static class LimelightTarget_Fiducial {
 
-        @JsonProperty("fid")
+        @JsonProperty("fID")
         public double fiducialID;
 
         @JsonProperty("fam")

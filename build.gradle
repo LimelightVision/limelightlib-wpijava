@@ -1,0 +1,72 @@
+
+plugins {
+    id "java"
+    id "edu.wpi.first.NativeUtils" version "2023.11.1" apply false
+    id "edu.wpi.first.wpilib.repositories.WPILibRepositoriesPlugin" version "2020.2"
+    id 'edu.wpi.first.WpilibTools' version '1.0.0'
+}
+
+ext.groupId = "io.limelightvision"
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven { url = "https://maven.photonvision.org/repository/internal/" }
+    }
+    wpilibRepositories.addAllReleaseRepositories(it)
+    wpilibRepositories.addAllDevelopmentRepositories(it)
+}
+
+dependencies {
+    // allwpilib
+    implementation wpilibTools.deps.wpilibJava("ntcore")
+    implementation wpilibTools.deps.wpilibJava("wpimath")
+    implementation wpilibTools.deps.wpilibJava("wpiutil")
+    
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-core:2.12.4"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
+}
+
+
+// Publishing
+apply plugin: 'maven-publish'
+
+task javadoc(type: Javadoc, overwrite: true) {
+    source = sourceSets.main.allJava
+
+    javadoc.options.links("http://docs.oracle.com/javase/8/docs/api/")
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+
+    repositories {
+        maven {
+            url "${rootDir}/build/maven_output"
+        }
+    }
+
+    publications {
+
+        snobot_sim_java(MavenPublication) {
+            groupId "${project.groupId}"
+            version "${project.version}"
+
+            artifact jar
+            artifact javadocJar
+            artifact sourcesJar
+        }
+    }
+}

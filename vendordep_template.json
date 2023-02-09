@@ -1,0 +1,20 @@
+
+{
+    "fileName": "LimelightHelpers-java.json",
+    "name": "LimelightHelpers-java",
+    "version": "$VERSION",
+    "uuid": "$GUID",
+    "mavenUrls": ["https://raw.githubusercontent.com/LimelightVision/maven_repo/master"],
+    "jsonUrl": "http://raw.githubusercontent.com/LimelightVision/maven_repo/master/LimelightHelpers-java.json",
+    "javaDependencies": [
+      {
+        "groupId": "io.limelightvision",
+        "artifactId": "limelightlib-wpijava",
+        "version": "$VERSION"
+      }
+    ],
+    "jniDependencies": [],
+    "cppDependencies": []
+  }
+  
+  

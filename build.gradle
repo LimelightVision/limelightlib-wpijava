@@ -12,7 +12,6 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
-        maven { url = "https://maven.photonvision.org/repository/internal/" }
     }
     wpilibRepositories.addAllReleaseRepositories(it)
     wpilibRepositories.addAllDevelopmentRepositories(it)

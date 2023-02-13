@@ -303,6 +303,9 @@ public class LimelightHelpers {
         @JsonProperty("botpose_wpiblue")
         public double[] botpose_wpiblue;
 
+        @JsonProperty("t6c_rs")
+        public double[] camerapose_robotspace;
+
         public Pose3d getBotPose3d() {
             return toPose3D(botpose);
         }
@@ -346,6 +349,7 @@ public class LimelightHelpers {
             botpose = new double[6];
             botpose_wpired = new double[6];
             botpose_wpiblue = new double[6];
+            camerapose_robotspace = new double[6];
             targets_Retro = new LimelightTarget_Retro[0];
             targets_Fiducials = new LimelightTarget_Fiducial[0];
             targets_Classifier = new LimelightTarget_Classifier[0];
@@ -579,6 +583,11 @@ public class LimelightHelpers {
 
     public static Pose3d getTargetPose3d_RobotSpace(String limelightName) {
         double[] poseArray = getLimelightNTDoubleArray(limelightName, "targetpose_robotspace");
+        return toPose3D(poseArray);
+    }
+
+    public static Pose3d getCameraPose3d_RobotSpace(String limelightName) {
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "camerapose_robotspace");
         return toPose3D(poseArray);
     }
 

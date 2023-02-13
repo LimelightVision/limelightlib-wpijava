@@ -1,4 +1,4 @@
-//LimelightHelpers v1.1.2 (Feb 8, 2023)
+//LimelightHelpers v1.2.0 (Feb 13, 2023)
 
 package frc.robot;
 
@@ -279,7 +279,7 @@ public class LimelightHelpers {
         @JsonProperty("tl")
         public double latency_pipeline;
 
-        @JsonProperty("tl_cap")
+        @JsonProperty("cl")
         public double latency_capture;
 
         public double latency_jsonParse;
@@ -302,6 +302,9 @@ public class LimelightHelpers {
 
         @JsonProperty("botpose_wpiblue")
         public double[] botpose_wpiblue;
+
+        @JsonProperty("t6c_rs")
+        public double[] camerapose_robotspace;
 
         public Pose3d getBotPose3d() {
             return toPose3D(botpose);
@@ -346,6 +349,7 @@ public class LimelightHelpers {
             botpose = new double[6];
             botpose_wpired = new double[6];
             botpose_wpiblue = new double[6];
+            camerapose_robotspace = new double[6];
             targets_Retro = new LimelightTarget_Retro[0];
             targets_Fiducials = new LimelightTarget_Fiducial[0];
             targets_Classifier = new LimelightTarget_Classifier[0];
@@ -460,7 +464,7 @@ public class LimelightHelpers {
     }
 
     public static double getLatency_Capture(String limelightName) {
-        return getLimelightNTDouble(limelightName, "tl_cap");
+        return getLimelightNTDouble(limelightName, "cl");
     }
 
     public static double getCurrentPipelineIndex(String limelightName) {
@@ -582,6 +586,11 @@ public class LimelightHelpers {
         return toPose3D(poseArray);
     }
 
+    public static Pose3d getCameraPose3d_RobotSpace(String limelightName) {
+        double[] poseArray = getLimelightNTDoubleArray(limelightName, "camerapose_robotspace");
+        return toPose3D(poseArray);
+    }
+
     /**
      * Gets the Pose2d for easy use with Odometry vision pose estimator
      * (addVisionMeasurement)
@@ -666,18 +675,36 @@ public class LimelightHelpers {
         setLimelightNTDouble(limelightName, "stream", 2);
     }
 
+    public static void setCameraMode_Processor(String limelightName) {
+        setLimelightNTDouble(limelightName, "camMode", 0);
+    }
+    public static void setCameraMode_Driver(String limelightName) {
+        setLimelightNTDouble(limelightName, "camMode", 1);
+    }
+
+
     /**
      * Sets the crop window. The crop window in the UI must be completely open for
      * dynamic cropping to work.
      */
-    public static void setCropWindow(String limelightName, double cropXMin, double cropXMax, double cropYMin,
-            double cropYMax) {
+    public static void setCropWindow(String limelightName, double cropXMin, double cropXMax, double cropYMin, double cropYMax) {
         double[] entries = new double[4];
         entries[0] = cropXMin;
         entries[1] = cropXMax;
         entries[2] = cropYMin;
         entries[3] = cropYMax;
         setLimelightNTDoubleArray(limelightName, "crop", entries);
+    }
+
+    public static void setCameraPose_RobotSpace(String limelightName, double forward, double side, double up, double roll, double pitch, double yaw) {
+        double[] entries = new double[6];
+        entries[0] = forward;
+        entries[1] = side;
+        entries[2] = up;
+        entries[3] = roll;
+        entries[4] = pitch;
+        entries[5] = yaw;
+        setLimelightNTDoubleArray(limelightName, "camerapose_robotspace_set", entries);
     }
 
     /////

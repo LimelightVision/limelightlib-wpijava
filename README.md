@@ -5,7 +5,7 @@ https://github.com/LimelightVision/limelightlib-wpijava/releases
 This is a single-file library. All you need to do is copy the LimelightHelpers.java file from the latest release (https://github.com/LimelightVision/limelightlib-wpijava/releases) into your Java project's "robot" folder. You don't need to create any objects for your Limelights - the library is designed to be used in a functional manner.
 
 ### Basic Usage
-Every method in Limelightlib accepts a string parameter indicating the correct Limelight to use. If left blank or null, the name is assumed to be "limelight"
+Every method in Limelightlib accepts a string parameter indicating the correct Limelight to use. If left blank or null, the name is assumed to be "limelight".
 ```
 LimelightHelpers.setLEDMode_PipelineControl("");
 LimelightHelpers.setLEDMode_ForceBlink("")
@@ -19,8 +19,13 @@ Takes up to 2.5ms on RoboRIO 1.0. Parsing latency is logged in results.targeting
 
 ```
 LimelightHelpers.LimelightResults llresults = LimelightHelpers.getLatestResults("");
+LimelightHelpers.LimelightTarget_Fiducial[] dataFiducial = llresults.targetingResults.targets_Fiducials;
+public double[] data = dataFiducial[0].cameraPose_TargetSpace;
 ```
-Each LimelightResults instance contains a Results object. Each Results object contains data such as botpose, an array for each target type, etc. With getLatestResults(), you now have easy access to 100% of your Limelight's output.
+
+Each LimelightResults instance contains a `targetingResults` object. Each Results object contains data such as botpose, an array for each target type, etc. With getLatestResults(), you now have easy access to 100% of your Limelight's output.
+
+You may construct your code to recognize and track April Tags like the one showed above.
 
 ```
 double[] botposeRed = llresults.results.botpose_wpired;
@@ -42,6 +47,7 @@ LimelightHelpers.LimelightTarget_Classifier
 LimelightHelpers.LimelightTarget_Detector
 LimelightHelpers.Results
 LimelightHelpers.LimelightResults
+LimelightHelpers.profileJSON (This is a boolean which represents whether the time to recognize the target will be printed on the terminal)
 (Pure Static) LimelightHelpers
 ```
 
@@ -95,3 +101,7 @@ getPythonScriptData()
 takeSnapshot()
 getLatestResults()
 ```
+
+### Others
+
+There might be some problems that the coding way mentioned in the docs may not make sense. Under this condition, you may check the source code. 

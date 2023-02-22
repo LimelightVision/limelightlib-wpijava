@@ -1,5 +1,11 @@
 //LimelightHelpers v1.2.0 (Feb 13, 2023)
 
+/*
+ * change log 2.22 by @CLCK0622 & @aeilot: 
+ * change the source data transformed to pose3d from private to public, in order to let data fetching easier
+ * change the boolean profileJSON from private to public, so that logging feature can be easily configured
+ */
+
 package frc.robot;
 
 import edu.wpi.first.networktables.NetworkTable;

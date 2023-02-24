@@ -104,4 +104,4 @@ getLatestResults()
 
 ### Others
 
-There might be some problems that the coding way mentioned in the docs may not make sense. Under this condition, you may check the source code. 
+There might be some problems that the coding way mentioned in the docs may not make sense. Under this condition, you may refer to the source code. 

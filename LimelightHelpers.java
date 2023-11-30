@@ -372,7 +372,7 @@ public class LimelightHelpers {
         public Pose2d pose;
         public double timestampSeconds;
 
-        public PoseEstimate(Pose2d pose, double timestamp) {
+        public PoseEstimate(Pose2d pose, double timestampSeconds) {
             this.pose = pose;
             this.timestampSeconds = timestampSeconds;
         }

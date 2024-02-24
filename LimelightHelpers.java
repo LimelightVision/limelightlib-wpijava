@@ -385,6 +385,16 @@ public class LimelightHelpers {
 
     }
 
+    public static class PoseEstimate {
+        public Pose2d pose;
+        public double timestampSeconds;
+
+        public PoseEstimate(Pose2d pose, double timestampSeconds) {
+            this.pose = pose;
+            this.timestampSeconds = timestampSeconds;
+        }
+    }
+
     private static ObjectMapper mapper;
 
     /**
@@ -420,6 +430,14 @@ public class LimelightHelpers {
         Translation2d tran2d = new Translation2d(inData[0], inData[1]);
         Rotation2d r2d = new Rotation2d(Units.degreesToRadians(inData[5]));
         return new Pose2d(tran2d, r2d);
+    }
+
+    private static PoseEstimate getBotPoseEstimate(String limelightName, String entryName) {
+        var poseEntry = LimelightHelpers.getLimelightNTTableEntry(limelightName, entryName);
+        var poseArray = poseEntry.getDoubleArray(new double[0]);
+        var pose = toPose2D(poseArray);
+        var timestamp = poseEntry.getLastChange() / 1e6 - poseArray[6] / 1e3;
+        return new PoseEstimate(pose, timestamp);
     }
 
     public static NetworkTable getLimelightNTTable(String tableName) {
@@ -622,6 +640,17 @@ public class LimelightHelpers {
     }
 
     /**
+     * Gets the Pose2d and timestamp for use with WPILib pose estimator (addVisionMeasurement) when you are on the BLUE
+     * alliance
+     * 
+     * @param limelightName
+     * @return
+     */
+    public static PoseEstimate getBotPoseEstimate_wpiBlue(String limelightName) {
+        return getBotPoseEstimate(limelightName, "botpose_wpiblue");
+    }
+
+    /**
      * Gets the Pose2d for easy use with Odometry vision pose estimator
      * (addVisionMeasurement)
      * 
@@ -633,6 +662,16 @@ public class LimelightHelpers {
         double[] result = getBotPose_wpiRed(limelightName);
         return toPose2D(result);
 
+    }
+
+    /**
+     * Gets the Pose2d and timestamp for use with WPILib pose estimator (addVisionMeasurement) when you are on the RED
+     * alliance
+     * @param limelightName
+     * @return
+     */
+    public static PoseEstimate getBotPoseEstimate_wpiRed(String limelightName) {
+        return getBotPoseEstimate(limelightName, "botpose_wpired");
     }
 
     /**

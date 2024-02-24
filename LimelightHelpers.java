@@ -388,10 +388,21 @@ public class LimelightHelpers {
     public static class PoseEstimate {
         public Pose2d pose;
         public double timestampSeconds;
+        public double latency;
+        public int tagCount;
+        public double tagSpan;
+        public double avgTagDist;
+        public double avgTagArea;
 
-        public PoseEstimate(Pose2d pose, double timestampSeconds) {
+
+        public PoseEstimate(Pose2d pose, double timestampSeconds, double latency, int tagCount, double tagSpan, double avgTagDist, double avgTagArea) {
             this.pose = pose;
             this.timestampSeconds = timestampSeconds;
+            this.latency = latency;
+            this.tagCount = tagCount;
+            this.tagSpan = tagSpan;
+            this.avgTagDist = avgTagDist;
+            this.avgTagArea = avgTagArea;
         }
     }
 
@@ -432,12 +443,26 @@ public class LimelightHelpers {
         return new Pose2d(tran2d, r2d);
     }
 
+    private static double extractBotPoseEntry(double[] inData, int position){
+        if(inData.length < position+1)
+        {
+            return 0;
+        }
+        return inData[position];
+    }
+
     private static PoseEstimate getBotPoseEstimate(String limelightName, String entryName) {
         var poseEntry = LimelightHelpers.getLimelightNTTableEntry(limelightName, entryName);
         var poseArray = poseEntry.getDoubleArray(new double[0]);
         var pose = toPose2D(poseArray);
-        var timestamp = poseEntry.getLastChange() / 1e6 - poseArray[6] / 1e3;
-        return new PoseEstimate(pose, timestamp);
+        double latency = extractBotPoseEntry(poseArray,6);
+        int tagCount = (int)extractBotPoseEntry(poseArray,7);
+        double tagSpan = extractBotPoseEntry(poseArray,8);
+        double tagDist = extractBotPoseEntry(poseArray,9);
+        double tagArea = extractBotPoseEntry(poseArray,10);
+        //getlastchange() in microseconds, ll latency in milliseconds
+        var timestamp = (poseEntry.getLastChange() / 1000000.0) - (latency/1000.0);
+        return new PoseEstimate(pose, timestamp,latency,tagCount,tagSpan,tagDist,tagArea);
     }
 
     public static NetworkTable getLimelightNTTable(String tableName) {

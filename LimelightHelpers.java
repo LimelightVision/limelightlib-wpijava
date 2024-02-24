@@ -1,4 +1,4 @@
-//LimelightHelpers v1.2.1 (March 1, 2023)
+//LimelightHelpers v1.3.0 (Feb 24, 2024)
 
 package frc.robot;
 
@@ -303,6 +303,18 @@ public class LimelightHelpers {
         @JsonProperty("botpose_wpiblue")
         public double[] botpose_wpiblue;
 
+        @JsonProperty("botpose_tagcount")
+        public double botpose_tagcount;
+       
+        @JsonProperty("botpose_span")
+        public double botpose_span;
+       
+        @JsonProperty("botpose_avgdist")
+        public double botpose_avgdist;
+       
+        @JsonProperty("botpose_avgarea")
+        public double botpose_avgarea;
+
         @JsonProperty("t6c_rs")
         public double[] camerapose_robotspace;
 
@@ -362,10 +374,15 @@ public class LimelightHelpers {
     public static class LimelightResults {
         @JsonProperty("Results")
         public Results targetingResults;
+        
+        public String error;
 
         public LimelightResults() {
             targetingResults = new Results();
+            error = "";
         }
+
+
     }
 
     private static ObjectMapper mapper;
@@ -765,7 +782,7 @@ public class LimelightHelpers {
         try {
             results = mapper.readValue(getJSONDump(limelightName), LimelightResults.class);
         } catch (JsonProcessingException e) {
-            System.err.println("lljson error: " + e.getMessage());
+            results.error = "lljson error: " + e.getMessage();
         }
 
         long end = System.nanoTime();

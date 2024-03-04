@@ -13,6 +13,11 @@ LimelightHelpers.setCropWindow("",-1,1,-1,1);
 double tx = LimelightHelpers.getTX("");
 ```
 
+### Tips
+
+* For simple targeting applications, use getTX() and getTY()
+* For Pose estimation, use getBotPoseEstimate_wpiBlue() and see the tutorials section in our documentation.
+
 ### JSON Parsing
 getLatestResults() parses the latest Limelight JSON dump into a LimelightResults object.
 Takes up to 2.5ms on RoboRIO 1.0. Parsing latency is logged in results.targetingresults.latency_jsonParse and may be added to latency_pipeline and latency_capture.
@@ -35,6 +40,7 @@ LimelightHelpers.takeSnapshot("","snapshotname");
 
 ### Classes
 ```
+LimelightHelpers.PoseEstimate
 LimelightHelpers.LimelightTarget_Retro
 LimelightHelpers.LimelightTarget_Fiducial
 LimelightHelpers.LimelightTarget_Barcode

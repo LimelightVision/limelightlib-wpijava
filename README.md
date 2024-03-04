@@ -59,22 +59,35 @@ getLimelightURLString()
 getTX()
 getTY()
 getTA()
-getLatency_Pipeline()
-getLatency_Capture()
-getCurrentPipelineIndex()
-getJsonDump()
 
-getBotpose()
-getBotpose_wpiRed()
-getBotpose_wpiBlue()
-getBotpose_TargetSpace
-getCameraPsoe_TargetSpace()
-getTargetPose_CameraSpace()
-getTargetPose_RobotSpace()
+PoseEstimate getBotPoseEstimate()
+PoseEstimate getBotPoseEstimate_wpiBlue()
+PoseEstimate getBotPoseEstimate_wpiRed()
 
-getTargetColor()
-getFiducialID()
-getNeuralClassID()
+double getLatency_Pipeline()
+double getLatency_Capture()
+int getCurrentPipelineIndex()
+
+Pose3D getBotPose3d()
+Pose3D getBotPose3d_wpiRed()
+Pose3D getBotPose3d_wpiBlue()
+
+Pose2D getBotPose2d()
+Pose2D getBotPose2d_wpiBlue()
+Pose2D getBotPose2d_wpiRed()
+
+double[] getBotpose()
+double[] getBotpose_wpiRed()
+double[] getBotpose_wpiBlue()
+double[] getBotpose_TargetSpace
+double[] getCameraPose_TargetSpace()
+double[] getTargetPose_CameraSpace()
+double[] getTargetPose_RobotSpace()
+
+double[] getTargetColor()
+int getFiducialID()
+String getNeuralClassID()
+String getJsonDump()
 
 setPipelineIndex()
 
@@ -95,3 +108,4 @@ getPythonScriptData()
 takeSnapshot()
 getLatestResults()
 ```
+

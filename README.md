@@ -47,18 +47,9 @@ LimelightHelpers.LimelightResults
 
 ### LimelightHelpers Methods
 ```
-getLimelightNTTable()
-getLimelightNTTableEntry()
-getLimelightNTDouble()
-setLimelightNTDouble()
-setLimelightNTDoubleArray()
-getLimelightNTDouleArray()
-getLimelightNTString()
-getLimelightURLString()
-
-getTX()
-getTY()
-getTA()
+double getTX()
+double getTY()
+double getTA()
 
 PoseEstimate getBotPoseEstimate()
 PoseEstimate getBotPoseEstimate_wpiBlue()
@@ -107,5 +98,14 @@ getPythonScriptData()
 
 takeSnapshot()
 getLatestResults()
+
+getLimelightNTTable()
+getLimelightNTTableEntry()
+getLimelightNTDouble()
+setLimelightNTDouble()
+setLimelightNTDoubleArray()
+getLimelightNTDouleArray()
+getLimelightNTString()
+getLimelightURLString()
 ```
 

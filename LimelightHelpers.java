@@ -493,7 +493,7 @@ public class LimelightHelpers {
         int valsPerFiducial = 7;
         int expectedTotalVals = 11 + valsPerFiducial*tagCount;
 
-        if (poseArray.length < expectedTotalVals) {
+        if (poseArray.length != expectedTotalVals) {
             // Don't populate fiducials
         }
         else{

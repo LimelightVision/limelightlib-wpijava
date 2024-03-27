@@ -1,4 +1,4 @@
-//LimelightHelpers v1.4.0 (March 21, 2024)
+//LimelightHelpers v1.5.0 (March 27, 2024)
 
 package frc.robot;
 
@@ -759,6 +759,17 @@ public class LimelightHelpers {
     }
 
     /**
+     * Gets the Pose2d and timestamp for use with WPILib pose estimator (addVisionMeasurement) when you are on the BLUE
+     * alliance
+     * 
+     * @param limelightName
+     * @return
+     */
+    public static PoseEstimate getBotPoseEstimate_wpiBlue_MegaTag2(String limelightName) {
+        return getBotPoseEstimate(limelightName, "botpose_orb_wpiblue");
+    }
+
+    /**
      * Gets the Pose2d for easy use with Odometry vision pose estimator
      * (addVisionMeasurement)
      * 
@@ -780,6 +791,16 @@ public class LimelightHelpers {
      */
     public static PoseEstimate getBotPoseEstimate_wpiRed(String limelightName) {
         return getBotPoseEstimate(limelightName, "botpose_wpired");
+    }
+
+    /**
+     * Gets the Pose2d and timestamp for use with WPILib pose estimator (addVisionMeasurement) when you are on the RED
+     * alliance
+     * @param limelightName
+     * @return
+     */
+    public static PoseEstimate getBotPoseEstimate_wpiRed_MegaTag2(String limelightName) {
+        return getBotPoseEstimate(limelightName, "botpose_orb_wpired");
     }
 
     /**
@@ -865,6 +886,28 @@ public class LimelightHelpers {
         setLimelightNTDoubleArray(limelightName, "crop", entries);
     }
 
+    public static void SetRobotOrientation(String limelightName, double yaw, double yawRate, 
+        double pitch, double pitchRate, 
+        double roll, double rollRate) {
+
+        double[] entries = new double[6];
+        entries[0] = yaw;
+        entries[1] = yawRate;
+        entries[2] = pitch;
+        entries[3] = pitchRate;
+        entries[4] = roll;
+        entries[5] = rollRate;
+        setLimelightNTDoubleArray(limelightName, "robot_orientation_set", entries);
+    }
+
+    public static void SetFiducialIDFiltersOverride(String limelightName, int[] validIDs) {
+        double[] validIDsDouble = new double[validIDs.length];
+        for (int i = 0; i < validIDs.length; i++) {
+            validIDsDouble[i] = validIDs[i];
+        }        
+        setLimelightNTDoubleArray(limelightName, "fiducial_id_filters_set", validIDsDouble);
+    }
+    
     public static void setCameraPose_RobotSpace(String limelightName, double forward, double side, double up, double roll, double pitch, double yaw) {
         double[] entries = new double[6];
         entries[0] = forward;

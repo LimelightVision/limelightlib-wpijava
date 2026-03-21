@@ -1762,7 +1762,7 @@ public class LimelightHelpers {
      * Configures the throttle value. Set to 100-200 while disabled to reduce thermal output/temperature.
      * 
      * @param limelightName Name/identifier of the Limelight
-     * @param throttle Defaults to 0. Your Limelgiht will process one frame after skipping <throttle> frames.
+     * @param throttle Defaults to 0. Your Limelgiht will process one frame after skipping &lt;throttle&gt; frames.
      */
     public static void SetThrottle(String limelightName, int throttle) {
         setLimelightNTDouble(limelightName, "throttle_set", throttle);
